@@ -1,5 +1,6 @@
 import { useGetProductsQuery } from '@/app/store/product/product.api';
 import React from 'react';
+import CartDropdown from './cart-dropdown/CartDropdown';
 import ProductItem from './ProductItem';
 
 const Home: React.FC = () => {
@@ -10,6 +11,7 @@ const Home: React.FC = () => {
     <div>
       <div className='flex justify-between items-center mb-10'>
         <h1>Let&apos;s find your products!</h1>
+        <CartDropdown />
       </div>
 
       {isLoading ?
