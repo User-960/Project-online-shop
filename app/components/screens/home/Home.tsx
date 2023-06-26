@@ -1,26 +1,31 @@
-import Head from 'next/head';
+import { useGetProductsQuery } from '@/app/store/product/product.api';
 import React from 'react';
+import ProductItem from './ProductItem';
 
 const Home: React.FC = () => {
+  const { data = [], isLoading, error } = useGetProductsQuery(6);
+  if (isLoading) return <h1>Loading</h1>;
+
   return (
-    <>
-      <Head>
-        <title>Online Shop</title>
-        <meta name="description" content="Online shop" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <div>
-        <div className='flex justify-between items-center mb-10'>
-          <h1>Let&apos;s find your products!</h1>
-        </div>
-
-        <div className='flex flex-wrap justify-between'>
-          Data
-        </div>
+    <div>
+      <div className='flex justify-between items-center mb-10'>
+        <h1>Let&apos;s find your products!</h1>
       </div>
-    </>
+
+      {isLoading ?
+        ('Loading...') :
+        error ?
+          (<div className='text-red-600'>{'Error :' + error}</div>) :
+          (<div className='flex flex-wrap justify-between'>
+            {
+              data?.map((product: any) => (
+                <ProductItem product={product} />
+              ))
+            }
+          </div>
+          )
+      }
+    </div>
   )
 }
 
