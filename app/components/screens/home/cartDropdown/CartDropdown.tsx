@@ -41,6 +41,7 @@ const CartDropdown: React.FC = () => {
                         width='33'
                         height='48'
                         className='rounded-lg'
+                        priority={false}
                         layout='fixed'
                       />
                     </div>

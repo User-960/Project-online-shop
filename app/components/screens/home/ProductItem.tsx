@@ -14,10 +14,6 @@ const ProductItem: React.FC<IProductItemProps> = ({ product }) => {
 
   const isExistsInCart = cart.some(p => p.id === product.id);
 
-  const addHandler = (product: any) => {
-    addItem(product);
-  };
-
   return (
     <div
       style={{ width: '48%', backgroundColor: '#E5F0EA' }}
@@ -30,6 +26,7 @@ const ProductItem: React.FC<IProductItemProps> = ({ product }) => {
           width='100'
           height='143'
           className='rounded-xl m-auto w-[100px] h-[143px]'
+          priority={true}
         />
       </div>
       <div className='flex items-center justify-between mt-3'>
