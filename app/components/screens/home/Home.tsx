@@ -1,4 +1,5 @@
 import { useGetProductsQuery } from '@/app/store/product/product.api';
+import { IProduct } from '@/app/store/product/product.types';
 import React from 'react';
 import CartDropdown from './cart-dropdown/CartDropdown';
 import ProductItem from './ProductItem';
@@ -17,12 +18,12 @@ const Home: React.FC = () => {
       </div>
 
       {isLoading ?
-        ('Loading...') :
+        (<div>{'Loading...'}</div>) :
         error ?
           (<div className='text-red-600'>{'Error :' + error}</div>) :
           (<div className='flex flex-wrap justify-between max-w-[660px] m-auto'>
             {
-              data?.map((product: any) => (
+              data?.map((product: IProduct) => (
                 <ProductItem key={product.id} product={product} />
               ))
             }
