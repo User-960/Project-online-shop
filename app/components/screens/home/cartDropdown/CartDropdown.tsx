@@ -4,10 +4,12 @@ import Image from 'next/image';
 import PlaceOrder from './PlaceOrder';
 import { useTypedSelector } from '@/app/hooks/useTypedSelector';
 import { useOutside } from '@/app/hooks/useOutside';
+import { useActions } from '@/app/hooks/useActions';
 
 const CartDropdown: React.FC = () => {
   const { ref, isShow, setIsShow } = useOutside(false);
   const { cart } = useTypedSelector(state => state);
+  const { removeItem } = useActions();
 
   return (
     <>
@@ -49,7 +51,7 @@ const CartDropdown: React.FC = () => {
                       <div className='text-green-800'>${product.price}</div>
                     </div>
                   </div>
-                  <button onClick={() => console.log('1')}>
+                  <button onClick={() => removeItem({ id: product.id })}>
                     <BsTrash className='text-green-600' />
                   </button>
                 </div>
