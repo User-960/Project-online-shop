@@ -15,7 +15,7 @@ const ProductItem: React.FC<IProductItemProps> = ({ product }) => {
   return (
     <div
       style={{ width: '48%', backgroundColor: '#E5F0EA' }}
-      className='rounded-xl mb-5 p-3 shadow-sm'
+      className='rounded-xl mb-5 p-3 shadow-sm flex flex-col justify-between'
     >
       <div className='text-center'>
         <Image
@@ -23,7 +23,7 @@ const ProductItem: React.FC<IProductItemProps> = ({ product }) => {
           alt={product.title}
           width='100'
           height='143'
-          className='rounded-xl'
+          className='rounded-xl m-auto w-[100px] h-[143px]'
         />
       </div>
       <div className='flex items-center justify-between mt-3'>

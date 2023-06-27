@@ -10,7 +10,9 @@ const Home: React.FC = () => {
   return (
     <div>
       <div className='flex justify-between items-center mb-10'>
-        <h1>Let&apos;s find your products!</h1>
+        <h1 className='text-2xl text-green-900 font-medium'>
+          Let&apos;s find your products!
+        </h1>
         <CartDropdown />
       </div>
 
@@ -18,10 +20,10 @@ const Home: React.FC = () => {
         ('Loading...') :
         error ?
           (<div className='text-red-600'>{'Error :' + error}</div>) :
-          (<div className='flex flex-wrap justify-between'>
+          (<div className='flex flex-wrap justify-between max-w-[660px] m-auto'>
             {
               data?.map((product: any) => (
-                <ProductItem product={product} />
+                <ProductItem key={product.id} product={product} />
               ))
             }
           </div>
