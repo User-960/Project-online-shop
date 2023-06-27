@@ -1,7 +1,7 @@
 import { useGetProductsQuery } from '@/app/store/product/product.api';
 import { IProduct } from '@/app/store/product/product.types';
 import React from 'react';
-import CartDropdown from './cart-dropdown/CartDropdown';
+import CartDropdown from './cartDropdown/CartDropdown';
 import ProductItem from './ProductItem';
 
 const Home: React.FC = () => {
