@@ -1,16 +1,22 @@
 import Image from 'next/image'
 import { IProduct } from '@/app/store/product/product.types';
 import React from 'react';
+import { useActions } from '@/app/hooks/useActions';
+import { useTypedSelector } from '@/app/hooks/useTypedSelector';
 
 interface IProductItemProps {
   product: IProduct
 }
 
 const ProductItem: React.FC<IProductItemProps> = ({ product }) => {
+  const { addItem } = useActions();
+  const { cart } = useTypedSelector(state => state);
 
-  const addHandler = () => {
-    console.log('Add to cart');
-  }
+  const isExistsInCart = cart.some(p => p.id === product.id);
+
+  const addHandler = (product: any) => {
+    addItem(product);
+  };
 
   return (
     <div
@@ -34,9 +40,9 @@ const ProductItem: React.FC<IProductItemProps> = ({ product }) => {
       </div>
       <button
         className='text-sm mt-3 bg-white rounded-xl w-3/4 mx-auto block p-1 hover:bg-green-200'
-        onClick={addHandler}
+        onClick={() => !isExistsInCart && addItem(product)}
       >
-        Add to cart
+        {isExistsInCart ? 'Already in cart' : 'Add to cart'}
       </button>
     </div>
   )
